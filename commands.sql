@@ -89,3 +89,39 @@ FROM owners;
 SELECT name
 FROM owners
 LIMIT 3;
+
+Bonuses
+
+1. Create a foreign key that references the owner_id in the owners table and forces the constraint ON DELETE CASCADE.
+
+2. Create a constraint on the properties table called positive_num_units that ensures that you can only add a num_units value that is greater than or equal to zero (research CHECK to do this)
+
+3. Show all of the information from the owners table and the properties table in one joined table.
+
+SELECT owners.* , properties.*
+FROM owners
+INNER JOIN properties
+ON owners.owner_id=properties.owner_id;
+
+4. In the properties table change the name of the column "name" to "property_name".
+
+ALTER TABLE properties
+RENAME COLUMN name TO property_name;
+
+5. Count the total number of properties where the owner_id is between 1 and 3.
+
+SELECT COUNT (*)
+FROM properties
+WHERE owner_id >= 1 AND owner_id <= 3;
+
+6. Add a column to the owners table called fav_color with a type of TEXT
+
+ALTER TABLE owners
+ADD fav_color text;
+
+7. Change the name column in the owners table to be a type of VARCHAR(200)
+
+ALTER TABLE owners
+ALTER COLUMN name TYPE varchar(200);
+
+8. Delete the owners table - what happens? why?
