@@ -94,7 +94,16 @@ Bonuses
 
 1. Create a foreign key that references the owner_id in the owners table and forces the constraint ON DELETE CASCADE.
 
+ALTER TABLE properties
+ADD CONSTRAINT delete_cascade
+FOREIGN KEY (owner_id)
+REFERENCES owners (owner_id)
+ON DELETE CASCADE;
+
 2. Create a constraint on the properties table called positive_num_units that ensures that you can only add a num_units value that is greater than or equal to zero (research CHECK to do this)
+
+ALTER TABLE properties
+ADD CONSTRAINT positive_num_units CHECK (units >=0);
 
 3. Show all of the information from the owners table and the properties table in one joined table.
 
