@@ -134,3 +134,10 @@ ALTER TABLE owners
 ALTER COLUMN name TYPE varchar(200);
 
 8. Delete the owners table - what happens? why?
+kind2karma=# \c apartmentlab
+You are now connected to database "apartmentlab" as user "kind2karma".
+apartmentlab=# DROP TABLE owners;
+ERROR:  cannot drop table owners because other objects depend on it
+DETAIL:  constraint properties_owner_id_fkey on table properties depends on table owners
+constraint delete_cascade on table properties depends on table owners
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
