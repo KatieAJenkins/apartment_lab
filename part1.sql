@@ -42,6 +42,12 @@ VALUES ('John', 30);
 
 10. Add an owner named Jane who is 43 years old to the owners table.
 
+INSERT INTO owners (
+  name,
+  age
+)
+VALUES ('Jane', 43)
+
 11. Change Jane's age to 30.
 
 UPDATE owners
