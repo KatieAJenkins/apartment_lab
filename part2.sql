@@ -148,25 +148,39 @@ ORDER BY status, name;
 
 17. Select all of the names and ages for owners. If the owner does not have an age, use the COALESCE operator to give it a value of -1
 /*TO DO*/
-SELECT owners.name* , owners.age*
+SELECT owners.name , owners.age *
+COALESCE(owners.age) AS 0
 FROM owners;
-COALESCE(age === NULL)
 
 18. Create a view that stores the SQL command from question 17 (the query involving CASE)
-/*TO DO*/
-CREATE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition
+
+CREATE VIEW properties_size AS
+SELECT name, num_units,
+  CASE
+    WHEN num_units > 3000
+    THEN 'huge'
+    WHEN num_units >= 100 AND num_units <= 1150
+    THEN 'large'
+    WHEN num_units >= 30 AND num_units <=99
+    THEN 'medium'
+    WHEN num_units >= 5 AND num_units <=25
+    THEN 'small'
+    ELSE 'tiny'
+END status
+  FROM properties
+ORDER BY status, name;
 
 19. Using the EXPLAIN keyword, SELECT all information from the properties_size view
-/*TO DO*/
+
+EXPLAIN SELECT * FROM properties_size;
 
 20. Rename your view to prop_size
-/*TO DO*/
+
+ALTER VIEW Apartment_Size RENAME TO prop_size;
 
 21. Delete the view called prop_size
-/*TO DO*/
+
+DROP VIEW prop_size;
 
 Bonus (this might require you to look up documentation online here and here
 
