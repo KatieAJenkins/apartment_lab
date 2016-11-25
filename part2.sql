@@ -27,7 +27,7 @@ WHERE name LIKE 'j%';
 SELECT name
 FROM owners
 WHERE name LIKE 'b%' OR 'B%';
-/**Not working**/
+/**TO DO**/
 
 6. Find the lowest age of all the owners. Give this search result a name of minimum_age
 
