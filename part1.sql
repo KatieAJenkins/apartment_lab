@@ -1,4 +1,4 @@
-1. Show all the tables (this is a psql command).
+  1. Show all the tables (this is a psql command).
 \dt
 
 2. Show all the users (this is a psql command).

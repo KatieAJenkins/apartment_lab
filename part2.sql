@@ -27,6 +27,7 @@ WHERE name LIKE 'j%';
 SELECT name
 FROM owners
 WHERE name LIKE 'b%' OR 'B%';
+/**Not working**/
 
 6. Find the lowest age of all the owners. Give this search result a name of minimum_age
 
@@ -84,11 +85,10 @@ ORDER BY COUNT(*) ASC;
   53 |     1
   73 |     1
 (3 rows)
-
 ****NEED TO DO****
 
 14. Create a prepared statement called addOwner that inserts an owner with a name and age.
-
+*** Need to DO****
 INSERT INTO owners (
   name,
   age
@@ -96,7 +96,7 @@ INSERT INTO owners (
 VALUES(? , ? );
 
 **do I need to use bind statment here??
-$stmt->bind_param("sss", $firstname, $lastname, $email);
+$stmt->bind_param("sss", $firstname, $lastname, $email); maybe use ? in id serial
 
 15. Execute the addOwner statement with the values of 'test' and 25;
 
@@ -135,8 +135,10 @@ COALESCE(age === NULL)
 
 18. Create a view that stores the SQL command from question 17 (the query involving CASE)
 *****
-CREATE VIEW ages AS
-SELECT
+CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition
 
 19. Using the EXPLAIN keyword, SELECT all information from the properties_size view
 ******
