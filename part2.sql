@@ -26,8 +26,7 @@ WHERE name LIKE 'j%';
 
 SELECT name
 FROM owners
-WHERE name LIKE 'b%' OR 'B%';
-/**TO DO**/
+WHERE name LIKE '%b%';
 
 6. Find the lowest age of all the owners. Give this search result a name of minimum_age
 
@@ -70,12 +69,11 @@ WHERE age IS NOT NULL;
      |     0
 (4 rows)
 
-****NEED TO DO****
-
-SELECT COUNT(*)
+SELECT age,
+COUNT(*)
 FROM owners
-WHERE age IS NOT NULL
-ORDER BY COUNT(*) ASC;
+GROUP BY age
+ORDER BY COUNT(*) DESC, age ASC;
 
 13. Find the count of each age for the owners and order it by the age ascending only if the age is greater than zero . Your output should look like this:
 
@@ -85,18 +83,24 @@ ORDER BY COUNT(*) ASC;
   53 |     1
   73 |     1
 (3 rows)
-****NEED TO DO****
+
+SELECT age,
+COUNT(*)
+FROM owners
+WHERE age IS NOT NULL
+GROUP BY age
+ORDER BY COUNT(*) DESC, age ASC;
 
 14. Create a prepared statement called addOwner that inserts an owner with a name and age.
-*** Need to DO****
+
 INSERT INTO owners (
   name,
   age
 )
 VALUES(? , ? );
 
-**do I need to use bind statment here??
-$stmt->bind_param("sss", $firstname, $lastname, $email); maybe use ? in id serial
+/*TO DO*/
+$stmt->bind_param("si", $name, $age);
 
 15. Execute the addOwner statement with the values of 'test' and 25;
 
@@ -127,27 +131,42 @@ VALUES('test' , 25 );
  galvanize denver golden triangle |         3 | tiny
 (15 rows)
 
+SELECT name, num_units,
+  CASE
+    WHEN num_units > 3000
+    THEN 'huge'
+    WHEN num_units >= 100 AND num_units <= 1150
+    THEN 'large'
+    WHEN num_units >= 30 AND num_units <=99
+    THEN 'medium'
+    WHEN num_units >= 5 AND num_units <=25
+    THEN 'small'
+    ELSE 'tiny'
+END status
+  FROM properties
+ORDER BY status, name;
+
 17. Select all of the names and ages for owners. If the owner does not have an age, use the COALESCE operator to give it a value of -1
-****
+/*TO DO*/
 SELECT owners.name* , owners.age*
 FROM owners;
 COALESCE(age === NULL)
 
 18. Create a view that stores the SQL command from question 17 (the query involving CASE)
-*****
+/*TO DO*/
 CREATE VIEW view_name AS
 SELECT column_name(s)
 FROM table_name
 WHERE condition
 
 19. Using the EXPLAIN keyword, SELECT all information from the properties_size view
-******
+/*TO DO*/
 
 20. Rename your view to prop_size
-*******
+/*TO DO*/
 
 21. Delete the view called prop_size
-*****
+/*TO DO*/
 
 Bonus (this might require you to look up documentation online here and here
 
