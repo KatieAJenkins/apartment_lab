@@ -17,7 +17,7 @@ FROM owners
 ORDER BY age ASC;
 
 6. Show the name of any owner whose name is Donald.
-
+tinc
 SELECT name
 FROM owners
 WHERE name = 'Donald';
